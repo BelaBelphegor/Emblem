@@ -9,6 +9,7 @@ class Game extends Phaser.Game
         this.state.start('Boot');
     }
 }
+
 window.onload = function()
 {
     window.game = new Game();

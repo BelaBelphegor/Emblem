@@ -1,8 +1,8 @@
-class Boot extends Phaser.State
+class MainState extends Phaser.State
 {
     create()
     {
-        this.game.stage.backgroundColor = '#fff';
+            this.game.stage.backgroundColor = '#fff';
        //scaling options
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         //have the game centered horizontally
@@ -10,8 +10,11 @@ class Boot extends Phaser.State
         this.scale.pageAlignVertically = true;
         //physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.physics.arcade.gravity.y = 0;
-        this.state.start('Preload');
       //  this.state.start('MainState');
+    }
+
+    update()
+    {
+
     }
 }
