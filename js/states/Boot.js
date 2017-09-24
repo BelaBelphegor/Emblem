@@ -8,6 +8,7 @@ class Boot extends Phaser.State
         //have the game centered horizontally
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
+        this.scale.setMinMax(320, 240, 640, 480);
         //physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 0;

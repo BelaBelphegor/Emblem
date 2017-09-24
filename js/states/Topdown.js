@@ -20,6 +20,14 @@ class Topdown extends Phaser.State
         this.evil.body.velocity.x = 0;
         this.evil.body.velocity.y = 0;
 
+        // Test weapon
+        this.weapon = game.add.tileSprite(124, 224, 64, 64, 'dagger');
+        this.weapon.anchor.setTo(0.5, 0.5);
+        this.weapon.scale.setTo(0.5, 0.5);
+        this.game.physics.arcade.enable(this.weapon);
+        this.weapon.body.setSize(8, 16, 64, 60);
+        this.weapon.visible = false;
+
         // Player initialisation
         this.player = game.add.tileSprite(124, 224, 24, 32, 'player');
         this.player.anchor.setTo(0.5, 0.5);
@@ -61,10 +69,19 @@ class Topdown extends Phaser.State
             this.player.body.velocity.x += 75;
             this.player.animations.play('walk_right');
         }
+        this.weapon.position.x = this.player.position.x - 6;
+        this.weapon.position.y = this.player.position.y - 20;
+        this.weapon.visible = true;
         // Set collisions
         this.game.physics.arcade.collide(this.player, this.collisionLayer);
         this.game.physics.arcade.collide(this.evil, this.collisionLayer);
         this.game.physics.arcade.collide(this.player, this.evil);
+        this.game.physics.arcade.overlap(this.weapon, this.evil, this.collision_handler, null, this);
         this.evil.animations.play('walk_left');
+    }
+
+    collision_handler(obj1, obj2)
+    {
+        console.log('Hit!');
     }
 }   
